@@ -1,5 +1,8 @@
 package com.tistory.jaimemin.jpabook.jpashop;
 
+import com.tistory.jaimemin.jpabook.jpashop.domain.Order;
+import com.tistory.jaimemin.jpabook.jpashop.domain.OrderItem;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -16,6 +19,12 @@ public class JpaMain {
         transaction.begin();
 
         try {
+            Order order = new Order();
+            entityManager.persist(order);
+
+            OrderItem orderItem = new OrderItem();
+            orderItem.setOrder(order);
+            entityManager.persist(orderItem);
 
             transaction.commit();
         } catch (Exception e) {
