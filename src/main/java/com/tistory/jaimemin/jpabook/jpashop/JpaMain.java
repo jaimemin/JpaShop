@@ -1,5 +1,6 @@
 package com.tistory.jaimemin.jpabook.jpashop;
 
+import com.tistory.jaimemin.jpabook.jpashop.domain.Book;
 import com.tistory.jaimemin.jpabook.jpashop.domain.Order;
 import com.tistory.jaimemin.jpabook.jpashop.domain.OrderItem;
 
@@ -19,12 +20,10 @@ public class JpaMain {
         transaction.begin();
 
         try {
-            Order order = new Order();
-            entityManager.persist(order);
-
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
-            entityManager.persist(orderItem);
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("gudetama");
+            entityManager.persist(book);
 
             transaction.commit();
         } catch (Exception e) {
